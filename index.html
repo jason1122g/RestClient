@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
+
+    <title>Hello World</title>
+
+    <style>
+      body {
+        padding: 10px;
+      }
+      .url-form {
+        display: flex;
+      }
+      .url-form .method {
+        width: 7em;
+      }
+      .url-form .url {
+        flex: 1;
+      }
+      .param-form .item {
+        margin: 5px 2px;
+      }
+      .param-form input.key {
+        width: 40%;
+      }
+      .param-form input.value {
+        width: 40%;
+      }
+      .param-form input.deletor {
+        width: 5%;
+      }
+      .query-form input {
+        background-color: #337ab7;
+      }
+      .header-form input {
+        background-color: #5bc0de;
+      }
+      .body-form textarea {
+        width: 90%;
+        background-color: #f0ad4e;
+      }
+      .response-form {
+        margin-top: 10px;
+        display: none;
+      }
+      .response-form pre {
+        margin-top: 10px;
+      }
+      .response-form .result-state {
+        line-height: 1.42857;
+        position: relative;
+        display: block;
+        padding: 10px 15px;
+      }
+      .foot-form {
+        position: fixed;
+        height: 30px;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+      }
+    </style>
+    <link href="css/bootstrap.min.css" rel="stylesheet"></link>
+    <script src="js/jquery-2.1.4.min.js" defer></script>
+    <script src="js/bootstrap.min.js" defer></script>
+    <script src="app.js" defer></script>
+
+  </head>
+
+  <body>
+    <div class="url-form">
+      <div class="method">
+        <select class="selector">
+         <option value="GET">GET</option>
+         <option value="PUT">PUT</option>
+         <option value="POST">POST</option>
+         <option value="PATCH">PATCH</option>
+         <option value="DELETE">DELETE</option>
+         <option value="HEAD">HEAD</option>
+         <option value="OPTIONS">OPTIONS</option>
+        </select>
+      </div>
+      <div class="url">
+          <input type="text" class="" value="http://httpbin.org/get" />
+      </div>
+    </div>
+
+    <div class="query-form param-form"></div>
+    <div class="header-form param-form"></div>
+    <div class="body-form param-form"></div>
+
+    <div class="response-form">
+      <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href=".tab-body">Body</a></li>
+        <li class=""><a data-toggle="tab" href=".tab-header">Header</a></li>
+        <li class="result-state">000</li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-body tab-pane active">
+          <pre class="result-body">
+          </pre>
+        </div>
+        <div class="tab-header tab-pane">
+          <pre class="result-header">
+          </pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="foot-form">
+      <div class="btn btn-primary query" onclick="addQuery()">+Query</div>
+      <div class="btn btn-info header" onclick="addHeader()">+Header</div>
+      <div class="btn btn-warning body" onclick="triggerBody()">*Body</div>
+      <div class="btn btn-success" onclick="sendRequest()">SEND</div>
+    </div>
+  </body>
+
+</html>
