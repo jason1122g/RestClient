@@ -2,7 +2,7 @@ var assert = require('assert');
 var sinon  = require('sinon');
 var rest   = require('../rest.js')
 
-describe( 'app', function(){
+describe( 'rest', function(){
   describe( 'isBodyMethod', function(){
     var tests = [
       { input: 'GET',     output: false },
@@ -14,8 +14,8 @@ describe( 'app', function(){
       { input: 'PATCH',   output: true }
     ];
     tests.forEach( function(test){
-      it('tell "' + test.input + '" as ' + test.output, function(){
-        assert.equal(test.output, rest.isBodyMethod(test.input));
+      it( 'tell "' + test.input + '" as ' + test.output, function(){
+        assert.equal( test.output, rest.isBodyMethod( test.input ) );
       })
     })
   })
