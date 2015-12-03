@@ -1,16 +1,15 @@
 window.addEventListener( "load", function() {
-  $( '.url-form .method .selector' ).on( 'change', function() {
-    var method = this.value;
-    if( isBodyMethod( method ) ) {
-      $( '.foot-form .query' ).hide();
-      $( '.foot-form .body' ).show();
-    } else {
-      $( '.foot-form .query' ).show();
-      $( '.foot-form .body' ).hide();
-    }
-  } );
+  initEventHandlers();
   $( '.foot-form .body' ).hide();
 });
+
+function initEventHandlers() {
+  $( '.foot-form .query'  ).on( 'click', addQuery );
+  $( '.foot-form .header' ).on( 'click', addHeader );
+  $( '.foot-form .body'   ).on( 'click', triggerBody );
+  $( '.foot-form .send'   ).on( 'click', sendRequest );
+  $( '.url-form .method .selector' ).on( 'change', changeMethod );
+}
 
 function isBodyMethod( method ) {
   return method != 'GET' && method != 'DELETE' && method != 'HEAD' && method != 'OPTIONS';
@@ -47,6 +46,17 @@ function createTextarea( type ) {
   input_value.className = "value";
   input_value.placeholder = type + " value";
   return input_value;
+}
+
+function changeMethod() {
+  var method = this.value;
+  if( isBodyMethod( method ) ) {
+    $( '.foot-form .query' ).hide();
+    $( '.foot-form .body' ).show();
+  } else {
+    $( '.foot-form .query' ).show();
+    $( '.foot-form .body' ).hide();
+  }
 }
 
 function addQuery() {
@@ -146,8 +156,9 @@ function getContentType() {
 }
 
 function renderResponseBody( xhr ) {
+  var crossFrame  = xhr.getResponseHeader( 'X-Frame-Options' ) || "";
   var contentType = xhr.getResponseHeader( "content-type" ) || "";
-  if( contentType.indexOf( 'html' ) > -1 ) {
+  if( contentType.indexOf( 'html' ) > -1 && crossFrame != 'sameorigin' && crossFrame != 'deny' ) {
     $( '.result-body' ).html( '<iframe class="result-frame" src="' + getURL() + '"></iframe>' );
     $( '.result-frame' ).css( 'height', $( window ).height() - 150 + 'px' );
   } else if ( contentType.indexOf( 'json' ) > -1 ) {
@@ -184,9 +195,9 @@ function renderResponse( xhr ) {
 }
 
 function sendRequest() {
-  $.ajaxSetup({
-    beforeSend: function(){}
-  })
+  $.ajaxSetup( {
+    xhr: function() { return new window.XMLHttpRequest( { mozSystem: true } ); }
+  } );
   $.ajax({
     type: getMethod(),
     url: getURL(),

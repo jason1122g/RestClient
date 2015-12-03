@@ -11,5 +11,9 @@
   "developer": {
     "name": "Your name",
     "url": "http://example.com"
+  },
+  "type": "privileged",
+  "permissions": {
+    "systemXHR": {}
   }
 }
