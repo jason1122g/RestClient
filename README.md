@@ -2,6 +2,7 @@
 An application run in Firefox OS that helps web developers to test custom HTTP requests
 
 ![PIC](http://g.recordit.co/aOHesoNVes.gif)
+![PIC](http://g.recordit.co/NT1psBbJSf.gif)
 
 ## Feature
 
