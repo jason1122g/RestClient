@@ -1,27 +1,22 @@
 # RestClient
-An application run in Firefox OS
+An application run in Firefox OS that helps web developers to test custom HTTP requests
+
+![PIC](http://g.recordit.co/aOHesoNVes.gif)
 
 ## Feature
 
-- Request
-  - Method
-    - GET
-    - POST
-    - PUT
-    - PATCH
-    - DELETE
-    - OPTIONS
-    - HEAD
-  - Query Parameter
-  - Header
-  - Body
-    - JSON
-    - Form
-    
+- When Request
+  - Custom Method
+  - Custom Query Parameter
+  - Custom Header
+  - Custom Body
+    - Formatted in JSON
+    - Formatted in Form Encoded
 
-- Response
-  - Status
-  - Body
-    - JSON
-    - HTML
+
+- When Response
+  - Show Status
+  - Show Body
+    - Formatted JSON
+    - Formatted HTML
     - Plain Text
