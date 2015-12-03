@@ -1,0 +1,27 @@
+{
+  "name": "restclient",
+  "version": "0.0.0",
+  "description": "rest client",
+  "main": "index.html",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jason1122g/RestClient.git"
+  },
+  "keywords": [
+    "rest",
+    "http",
+    "firefoxos"
+  ],
+  "author": "JasonChiu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jason1122g/RestClient/issues"
+  },
+  "dependencies": {
+    "mocha": "latest",
+    "sinon": "latest"
+  }
+}
